@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import MoodForm from './components/MoodForm'
 
 function App() {
   const [moods, setMoods] = useState(() => {
@@ -16,7 +17,9 @@ function App() {
   return (
     <div className="container">
       <h1>Mini Emoji Mood Journal</h1>
-      <p>Veri katmanı ve mimari altyapı başarıyla kuruldu!</p>
+
+      <MoodForm />
+      
     </div>
   )
 }
