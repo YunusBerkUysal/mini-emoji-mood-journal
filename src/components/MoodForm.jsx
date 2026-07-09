@@ -1,20 +1,62 @@
 import { useState } from 'react';
 
-function MoodForm() {
+function MoodForm({ onAddMood }) {
   const [date, setDate] = useState('');
   const [mood, setMood] = useState('');
   const [emoji, setEmoji] = useState('');
   const [note, setNote] = useState('');
 
+  const [error, setError] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setError('');
+
+    if (!date) {
+      setError('Lütfen bir tarih seçiniz.');
+      return;
+    }
+    if (!mood) {
+      setError('Lütfen bir ruh hali türü seçiniz.');
+      return;
+    }
+    if (!emoji) {
+      setError('Lütfen bir emoji seçiniz.');
+      return;
+    }
+    if (note.length > 200) {
+      setError('Not alanı 200 karakterden uzun olamaz.');
+      return;
+    }
+
     
-    console.log("Yeni Kayıt:", { date, mood, emoji, note });
+    const newRecord = {
+      id: crypto.randomUUID(),
+      emoji: emoji,
+      mood: mood,
+      note: note,
+      date: date,
+      createdAt: new Date().toISOString()
+    };
+
+    onAddMood(newRecord);
+
+    setDate('');
+    setMood('');
+    setEmoji('');
+    setNote('');
   };
 
   return (
     <form className="card" onSubmit={handleSubmit}>
       <h2>Nasıl Hissediyorsun?</h2>
+
+      {error && (
+        <div style={{ color: '#b91c1c', backgroundColor: '#fee2e2', padding: '10px', borderRadius: '6px', marginBottom: '15px', fontWeight: 'bold' }}>
+          {error}
+        </div>
+      )}
 
       <div className="form-group">
         <label htmlFor="date">Tarih</label>
