@@ -14,11 +14,15 @@ function App() {
     localStorage.setItem('moodRecords', JSON.stringify(moods));
   }, [moods]); 
 
+  const handleAddMood = (newRecord) => {
+    setMoods([newRecord, ...moods]);
+  };
+
   return (
     <div className="container">
       <h1>Mini Emoji Mood Journal</h1>
 
-      <MoodForm />
+      <MoodForm onAddMood={handleAddMood} />
       
     </div>
   )
