@@ -10,13 +10,13 @@ function MoodFilter({ currentFilter, onFilterChange }) {
         value={currentFilter}
         onChange={(e) => onFilterChange(e.target.value)}
       >
-        <option value="All">Tüm Kayıtlar</option>
-        <option value="Happy">Mutlu (Happy)</option>
+        <option value="Tümü">Tüm Kayıtlar</option>
+        <option value="Mutlu">Mutlu</option>
         <option value="Normal">Normal</option>
-        <option value="Sad">Üzgün (Sad)</option>
-        <option value="Angry">Kızgın (Angry)</option>
-        <option value="Tired">Yorgun (Tired)</option>
-        <option value="Stressed">Stresli (Stressed)</option>
+        <option value="Üzgün">Üzgün</option>
+        <option value="Kızgın">Kızgın</option>
+        <option value="Yorgun">Yorgun</option>
+        <option value="Stresli">Stresli</option>
       </select>
     </div>
   );

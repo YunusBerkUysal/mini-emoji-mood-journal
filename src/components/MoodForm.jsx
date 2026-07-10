@@ -5,7 +5,6 @@ function MoodForm({ onAddMood }) {
   const [mood, setMood] = useState('');
   const [emoji, setEmoji] = useState('');
   const [note, setNote] = useState('');
-
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
@@ -23,10 +22,6 @@ function MoodForm({ onAddMood }) {
     }
     if (!emoji) {
       setError('Lütfen bir emoji seçiniz.');
-      return;
-    }
-    if (note.length > 200) {
-      setError('Not alanı 200 karakterden uzun olamaz.');
       return;
     }
 
@@ -78,12 +73,12 @@ function MoodForm({ onAddMood }) {
           onChange={(e) => setMood(e.target.value)}
         >
           <option value="">Seçiniz...</option>
-          <option value="Happy">Mutlu (Happy)</option>
+          <option value="Mutlu">Mutlu</option>
           <option value="Normal">Normal</option>
-          <option value="Sad">Üzgün (Sad)</option>
-          <option value="Angry">Kızgın (Angry)</option>
-          <option value="Tired">Yorgun (Tired)</option>
-          <option value="Stressed">Stresli (Stressed)</option>
+          <option value="Üzgün">Üzgün</option>
+          <option value="Kızgın">Kızgın</option>
+          <option value="Yorgun">Yorgun</option>
+          <option value="Stresli">Stresli</option>
         </select>
       </div>
 
@@ -114,7 +109,18 @@ function MoodForm({ onAddMood }) {
           placeholder="Bugün neler oldu?"
           value={note}
           onChange={(e) => setNote(e.target.value)}
+          maxLength={200}
+          style={{ resize: 'vertical' }}
         ></textarea>
+        <div style={{
+          textAlign: 'right',
+          fontSize: '0.85rem',
+          marginTop: '5px',
+          fontWeight: note.length === 200 ? 'bold' : 'normal',
+          color: note.length === 200 ? '#b91c1c' : 'var(--text-muted)'
+        }}>
+          {note.length}/200
+        </div>
       </div>
 
       <button type="submit" className="btn-primary">Kaydet</button>

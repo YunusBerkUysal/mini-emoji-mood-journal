@@ -13,7 +13,7 @@ function App() {
     return [];
   });
 
-  const [filter, setFilter] = useState('All');
+  const [filter, setFilter] = useState('Tümü');
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
     return localStorage.getItem('darkMode') === 'true';
@@ -41,24 +41,24 @@ function App() {
     setMoods(updatedMoods);
   };
 
-  const filteredMoods = filter === 'All' ? moods : moods.filter(mood => mood.mood === filter);
+  const filteredMoods = filter === 'Tümü' ? moods : moods.filter(mood => mood.mood === filter);
 
   return (
-    <div className="container" style={{position: 'relative' }}>
-
-      <button
-        classname="theme-toggle"
+    <div className="container">
+      
+      <button 
+        className="theme-toggle"
         onClick={() => setIsDarkMode(!isDarkMode)}
         title={isDarkMode ? "Aydınlık Moda Geç" : "Karanlık Moda Geç"}
       >
-        {isDarkMode ? '☀️' : '🌙'}
+        {isDarkMode ? "☀️" : "🌙"}
       </button>
 
       <h1>Mini Emoji Mood Journal</h1>
-
+      
       <MoodStats moods={moods} />
-      <MoodFilter currentFilter={filter} onFilterChange={setFilter} />
       <MoodForm onAddMood={handleAddMood} />
+      <MoodFilter currentFilter={filter} onFilterChange={setFilter} />
       <MoodList moods={filteredMoods} onDeleteMood={handleDeleteMood} />
       
     </div>

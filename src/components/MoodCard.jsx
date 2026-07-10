@@ -1,4 +1,7 @@
 function MoodCard({ moodRecord, onDelete }) {
+
+  const formattedDate = moodRecord.date.split('-').reverse().join('/');
+  
   return (
     <div className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
       
@@ -6,11 +9,11 @@ function MoodCard({ moodRecord, onDelete }) {
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
           <span style={{ fontSize: '2rem', marginRight: '10px' }}>{moodRecord.emoji}</span>
           <strong style={{ fontSize: '1.2rem', marginRight: '10px' }}>{moodRecord.mood}</strong>
-          <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{moodRecord.date}</span>
+          <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{formattedDate}</span>
         </div>
         
         {moodRecord.note && (
-          <p style={{ margin: '0', color: '#4b5563', fontStyle: 'italic' }}>"{moodRecord.note}"</p>
+          <p style={{ margin: '0', color: 'var(--text-muted)', fontStyle: 'italic' }}>"{moodRecord.note}"</p>
         )}
       </div>
 

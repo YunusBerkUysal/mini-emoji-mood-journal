@@ -20,7 +20,7 @@ function MoodStats({ moods }) {
   }
 
   return (
-    <div className="card" style={{ display: 'flex', justifyContent: 'space-around', backgroundColor: '#e0e7ff', border: '1px solid #c7d2fe' }}>
+    <div className="card stats-card" style={{ display: 'flex', justifyContent: 'space-around' }}>
       
       <div style={{ textAlign: 'center' }}>
         <h4 style={{ margin: '0 0 5px 0', color: 'var(--text-muted)' }}>Toplam Kayıt</h4>
