@@ -1,16 +1,32 @@
-# React + Vite
+# Mini Emoji Mood Journal 😊
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Mini Emoji Mood Journal, kullanıcıların günlük ruh hallerini bir emoji, tarih ve kısa bir not ile kaydetmelerini sağlayan, React tabanlı basit ve kullanıcı dostu bir web uygulamasıdır. Kullanıcılar geçmiş kayıtlarını listeyebilir, ruh haline göre filtreleme yapabilir ve genel istatistiklerini takip edebilirler.
 
-Currently, two official plugins are available:
+## 🚀 Kurulum ve Çalıştırma Talimatları
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyin:
 
-## React Compiler
+1. **Projeyi Klonlayın veya İndirin:**
+   Terminalinizde projenin ana dizinine gidin.
+   `cd mini-emoji-mood-journal`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. **Bağımlılıkları Yükleyin:**
+   Node.js yüklü olduğundan emin olun. Ardından paketleri kurun:
+   `npm install`
 
-## Expanding the ESLint configuration
+3. **Geliştirme Sunucusunu Başlatın:**
+   `npm run dev`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+4. **Uygulamayı Görüntüleyin:**
+   Tarayıcınızda terminalin verdiği adrese giderek uygulamayı kullanmaya başlayabilirsiniz.
+
+## 🧩 Kullanılan Bileşenler (Components)
+
+Proje, sürdürülebilir bir mimariye sahip olup aşağıdaki bileşenlerden (components) oluşmaktadır:
+
+* **`App.jsx`:** Uygulamanın ana merkezidir. Durum yönetimi (State management) ve LocalStorage senkronizasyonu burada gerçekleşir. Alt bileşenlere "Props" aracılığıyla veri aktarır.
+* **`MoodForm.jsx`:** Kullanıcının yeni bir kayıt eklemesini sağlayan form bileşenidir. Form verilerini alır, validasyonları (doğrulamaları) yapar ve hataları kullanıcıya gösterir.
+* **`MoodList.jsx`:** Kaydedilen ruh hallerini listeleyen ana vitrin bileşenidir. Veri dizisini map metoduyla tarar. Kayıt yoksa "Boş Durum (Empty State)" mesajı gösterir.
+* **`MoodCard.jsx`:** Listelenen her bir ruh hali kaydının UI kartı şeklinde ekrana çizilmesini ve tekil silme işleminin tetiklenmesini sağlar.
+* **`MoodFilter.jsx`:** Geçmiş kayıtları ruh hali türüne göre filtrelemek için kullanılan bileşendir. Orijinal veriyi bozmadan türetilmiş durum (Derived State) kullanır.
+* **`MoodStats.jsx`:** Sayfanın üst kısmında toplam kayıt sayısını ve en sık seçilen ruh halini dinamik olarak hesaplayıp gösteren istatistik kartıdır.
