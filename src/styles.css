@@ -110,3 +110,27 @@ body.dark-mode .stats-card {
   padding: 0;
   z-index: 1000;
 }
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+  
+  .stats-card {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+}

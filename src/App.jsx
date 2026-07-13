@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MoodForm from './components/MoodForm'
 import MoodList from './components/MoodList'
 import MoodStats from './components/MoodStats'
 import MoodFilter from './components/MoodFilter'
+import Navbar from './components/Navbar'
 
 function App() {
   const [moods, setMoods] = useState(() => {
@@ -44,24 +46,40 @@ function App() {
   const filteredMoods = filter === 'Tümü' ? moods : moods.filter(mood => mood.mood === filter);
 
   return (
-    <div className="container">
-      
-      <button 
-        className="theme-toggle"
-        onClick={() => setIsDarkMode(!isDarkMode)}
-        title={isDarkMode ? "Aydınlık Moda Geç" : "Karanlık Moda Geç"}
-      >
-        {isDarkMode ? "☀️" : "🌙"}
-      </button>
+    <Router>
+      <div className="container">
+        <button 
+          className="theme-toggle" 
+          onClick={() => setIsDarkMode(!isDarkMode)}
+          title={isDarkMode ? "Aydınlık Moda Geç" : "Karanlık Moda Geç"}
+        >
+          {isDarkMode ? "☀️" : "🌙"}
+        </button>
 
-      <h1>Mini Emoji Mood Journal</h1>
-      
-      <MoodStats moods={moods} />
-      <MoodForm onAddMood={handleAddMood} />
-      <MoodFilter currentFilter={filter} onFilterChange={setFilter} />
-      <MoodList moods={filteredMoods} onDeleteMood={handleDeleteMood} />
-      
-    </div>
+        <h1 style={{ marginTop: '40px' }}>Mini Emoji Mood Journal</h1>
+        
+        <Navbar />
+
+        <Routes>
+          
+          <Route path="/" element={
+            <>
+              <MoodStats moods={moods} />
+              <MoodForm onAddMood={handleAddMood} />
+            </>
+          } />
+
+          <Route path="/history" element={
+            <>
+              <MoodFilter currentFilter={filter} onFilterChange={setFilter} />
+              <MoodList moods={filteredMoods} onDeleteMood={handleDeleteMood} />
+            </>
+          } />
+
+        </Routes>
+        
+      </div>
+    </Router>
   )
 }
 
